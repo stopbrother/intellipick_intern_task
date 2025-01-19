@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import AuthHeader from "../AuthHeader";
 
 const Header = () => {
   return (
@@ -11,6 +12,7 @@ const Header = () => {
           <Link to="/todos">목록</Link>
         </li>
       </ul>
+      <AuthHeader />
     </nav>
   );
 };
