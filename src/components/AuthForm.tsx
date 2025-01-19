@@ -5,7 +5,7 @@ import {
   useLoginMutation,
   useRegisterMutation,
 } from "../query/useAuthMutation";
-import { registerData } from "../types/auth.types";
+import { logindata, registerData } from "../types/auth.types";
 
 interface AuthFormProps {
   mode: "register" | "login";
@@ -50,7 +50,7 @@ const AuthForm = ({ mode }: AuthFormProps) => {
     if (mode === "register") {
       register(formData as registerData);
     } else {
-      login(formData);
+      login(formData as logindata);
     }
   };
 
@@ -58,18 +58,18 @@ const AuthForm = ({ mode }: AuthFormProps) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <h2>{mode === "register" ? "회원가입" : "로그인"}</h2>
 
-      <label>아이디</label>
-      <input type="text" {...registerForm("id")} />
+      <label htmlFor="id">아이디</label>
+      <input type="text" id="id" {...registerForm("id")} />
       {errors.id && <p>{errors.id.message}</p>}
 
-      <label>비밀번호</label>
-      <input type="password" {...registerForm("password")} />
+      <label htmlFor="password">비밀번호</label>
+      <input type="password" id="password" {...registerForm("password")} />
       {errors.password && <p>{errors.password.message}</p>}
 
       {mode === "register" && (
         <>
-          <label>닉네임</label>
-          <input type="text" {...registerForm("nickname")} />
+          <label htmlFor="nickname">닉네임</label>
+          <input type="text" id="nickname" {...registerForm("nickname")} />
           <p>{(errors as FieldErrors<registerData>).nickname?.message}</p>
         </>
       )}
