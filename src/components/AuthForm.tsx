@@ -55,28 +55,53 @@ const AuthForm = ({ mode }: AuthFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h2>{mode === "register" ? "회원가입" : "로그인"}</h2>
+    <main className="max-w-[1200px] mx-auto mt-4">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col max-w-[640px] mx-auto gap-4"
+      >
+        <h2 className="font-bold text-xl">
+          {mode === "register" ? "회원가입" : "로그인"}
+        </h2>
 
-      <label htmlFor="id">아이디</label>
-      <input type="text" id="id" {...registerForm("id")} />
-      {errors.id && <p>{errors.id.message}</p>}
+        <label htmlFor="id">아이디</label>
+        <input
+          type="text"
+          id="id"
+          {...registerForm("id")}
+          className="h-10 rounded-md border border-gray-300 p-2"
+        />
+        {errors.id && <p>{errors.id.message}</p>}
 
-      <label htmlFor="password">비밀번호</label>
-      <input type="password" id="password" {...registerForm("password")} />
-      {errors.password && <p>{errors.password.message}</p>}
+        <label htmlFor="password">비밀번호</label>
+        <input
+          type="password"
+          id="password"
+          {...registerForm("password")}
+          className="h-10 rounded-md border border-gray-300 p-2"
+        />
+        {errors.password && <p>{errors.password.message}</p>}
 
-      {mode === "register" && (
-        <>
-          <label htmlFor="nickname">닉네임</label>
-          <input type="text" id="nickname" {...registerForm("nickname")} />
-          <p>{(errors as FieldErrors<registerData>).nickname?.message}</p>
-        </>
-      )}
-      <button type="submit">
-        {mode === "register" ? "회원가입" : "로그인"}
-      </button>
-    </form>
+        {mode === "register" && (
+          <>
+            <label htmlFor="nickname">닉네임</label>
+            <input
+              type="text"
+              id="nickname"
+              {...registerForm("nickname")}
+              className="h-10 rounded-md border border-gray-300 p-2"
+            />
+            <p>{(errors as FieldErrors<registerData>).nickname?.message}</p>
+          </>
+        )}
+        <button
+          type="submit"
+          className="flex justify-center items-center rounded-md h-10 bg-gray-500 hover:bg-opacity-50"
+        >
+          {mode === "register" ? "회원가입" : "로그인"}
+        </button>
+      </form>
+    </main>
   );
 };
 

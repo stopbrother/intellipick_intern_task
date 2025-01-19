@@ -6,16 +6,26 @@ const AuthHeader = () => {
   const { data } = useAuthQuery();
   const { mutate: logout } = useLogoutMutation();
   return (
-    <div>
+    <div className="flex items-center gap-2">
       {!data ? (
         <>
-          <Link to="/register">회원가입</Link>
-          <Link to="/login">로그인</Link>
+          <Link to="/register" className="hover:text-[#E63946]">
+            회원가입
+          </Link>
+          <Link to="/login" className="hover:text-[#E63946]">
+            로그인
+          </Link>
         </>
       ) : (
         <>
-          <Link to="/mypage">마이페이지</Link>
-          <button type="button" onClick={() => logout()}>
+          <Link to="/mypage" className="bg-[#588157] hover:bg-[#476947]">
+            마이페이지
+          </Link>
+          <button
+            type="button"
+            className="bg-[#588157] hover:bg-[#476947]"
+            onClick={() => logout()}
+          >
             로그아웃
           </button>
         </>
